@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.5.3.2 (Windows)"/>
+	<meta name="created" content="2025-07-11T09:50:46.449000000"/>
+	<meta name="changed" content="2025-07-11T09:51:44.894000000"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p style="line-height: 100%; margin-bottom: 0in">
+&lt;!DOCTYPE html&gt;<br/>
+&lt;html lang=&quot;en&quot;&gt;<br/>
+&lt;head&gt;<br/>
+
+   &lt;meta charset=&quot;UTF-8&quot;&gt;<br/>
+    &lt;meta
+name=&quot;viewport&quot; content=&quot;width=device-width,
+initial-scale=1.0&quot;&gt;<br/>
+    &lt;title&gt;Truck Border
+Clearance System&lt;/title&gt;<br/>
+    &lt;link
+href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot;
+rel=&quot;stylesheet&quot;&gt;<br/>
+    &lt;script
+src=&quot;https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js&quot;&gt;&lt;/script&gt;<br/>
+
+   &lt;style&gt;<br/>
+        body {<br/>
+           
+background-color: #f8f9fa;<br/>
+            padding: 20px;<br/>
+     
+  }<br/>
+        .header {<br/>
+            background-color:
+#343a40;<br/>
+            color: white;<br/>
+            padding:
+20px;<br/>
+            margin-bottom: 30px;<br/>
+           
+border-radius: 5px;<br/>
+        }<br/>
+        .card {<br/>
+        
+   margin-bottom: 20px;<br/>
+            box-shadow: 0 4px 8px
+rgba(0,0,0,0.1);<br/>
+        }<br/>
+        .status-pending {<br/>
+ 
+          background-color: #fff3cd;<br/>
+        }<br/>
+       
+.status-cleared {<br/>
+            background-color: #d4edda;<br/>
+  
+     }<br/>
+        .status-rejected {<br/>
+           
+background-color: #f8d7da;<br/>
+        }<br/>
+       
+.filter-section {<br/>
+            background-color: #e9ecef;<br/>
+  
+         padding: 15px;<br/>
+            border-radius: 5px;<br/>
+   
+        margin-bottom: 20px;<br/>
+        }<br/>
+       
+.action-buttons button {<br/>
+            margin-right: 5px;<br/>
+   
+    }<br/>
+        .report-section {<br/>
+           
+background-color: #ffffff;<br/>
+            border-radius: 5px;<br/>
+
+           padding: 15px;<br/>
+            margin-bottom: 20px;<br/>
+
+           box-shadow: 0 2px 4px rgba(0,0,0,0.05);<br/>
+        }<br/>
+
+       .report-table th, .report-table td {<br/>
+           
+vertical-align: middle;<br/>
+        }<br/>
+        .sample-table th,
+.sample-table td {<br/>
+            padding: 4px 8px;<br/>
+          
+ border: 1px solid #dee2e6;<br/>
+        }<br/>
+        #titleScreen
+{<br/>
+            position: fixed;<br/>
+            top: 0; left: 0;
+right: 0; bottom: 0;<br/>
+            background: #343a40;<br/>
+     
+      z-index: 9999;<br/>
+            display: flex;<br/>
+           
+align-items: center;<br/>
+            justify-content: center;<br/>
+ 
+          flex-direction: column;<br/>
+        }<br/>
+       
+#titleScreen .card {<br/>
+            min-width: 330px;<br/>
+        
+   box-shadow: 0 8px 24px rgba(0,0,0,0.2);<br/>
+        }<br/>
+      
+ .hidden { display: none !important; }<br/>
+        .admin-section {<br/>
+
+           border: 2px solid #198754;<br/>
+            background:
+#eafbee;<br/>
+            border-radius: 5px;<br/>
+           
+margin-bottom: 2rem;<br/>
+            padding: 12px 16px;<br/>
+      
+ }<br/>
+        .admin-section h5 {<br/>
+            color: #198754;<br/>
+
+       }<br/>
+    &lt;/style&gt;<br/>
+&lt;/head&gt;<br/>
+&lt;body&gt;<br/>
+
+   &lt;!-- TITLE SCREEN --&gt;<br/>
+    &lt;div id=&quot;titleScreen&quot;&gt;<br/>
+
+       &lt;div class=&quot;text-center mb-4&quot;&gt;<br/>
+          
+ &lt;h1 class=&quot;text-white&quot;&gt;Truck Border Clearance
+System&lt;/h1&gt;<br/>
+        &lt;/div&gt;<br/>
+        &lt;div
+id=&quot;loginCard&quot; class=&quot;card p-4&quot;&gt;<br/>
+        
+   &lt;h4 class=&quot;mb-3&quot;&gt;Sign In&lt;/h4&gt;<br/>
+         
+  &lt;form id=&quot;loginForm&quot;&gt;<br/>
+                &lt;div
+class=&quot;mb-2&quot;&gt;<br/>
+                    &lt;label
+for=&quot;loginUsername&quot; class=&quot;form-label&quot;&gt;Username&lt;/label&gt;<br/>
+
+                   &lt;input type=&quot;text&quot; id=&quot;loginUsername&quot;
+class=&quot;form-control&quot; required&gt;<br/>
+               
+&lt;/div&gt;<br/>
+                &lt;div class=&quot;mb-3&quot;&gt;<br/>
+
+                   &lt;label for=&quot;loginPassword&quot;
+class=&quot;form-label&quot;&gt;Password&lt;/label&gt;<br/>
+         
+          &lt;input type=&quot;password&quot; id=&quot;loginPassword&quot;
+class=&quot;form-control&quot; required&gt;<br/>
+               
+&lt;/div&gt;<br/>
+                &lt;button type=&quot;submit&quot;
+class=&quot;btn btn-primary w-100&quot;&gt;Login&lt;/button&gt;<br/>
+
+               &lt;div class=&quot;mt-2 text-center&quot;&gt;<br/>
+  
+                 &lt;a href=&quot;#&quot;
+id=&quot;showRegisterLink&quot;&gt;Create an account&lt;/a&gt;<br/>
+ 
+              &lt;/div&gt;<br/>
+            &lt;/form&gt;<br/>
+      
+     &lt;div id=&quot;loginMsg&quot; class=&quot;mt-2
+text-center&quot;&gt;&lt;/div&gt;<br/>
+            &lt;div
+class=&quot;mt-2 text-center text-white-50 small&quot;&gt;Admin
+preset: admin / admin 1&lt;/div&gt;<br/>
+        &lt;/div&gt;<br/>
+  
+     &lt;div id=&quot;registerCard&quot; class=&quot;card p-4
+hidden&quot;&gt;<br/>
+            &lt;h4 class=&quot;mb-3&quot;&gt;Register&lt;/h4&gt;<br/>
+
+           &lt;form id=&quot;registerForm&quot;&gt;<br/>
+            
+   &lt;div class=&quot;mb-2&quot;&gt;<br/>
+                    &lt;label
+for=&quot;registerUsername&quot; class=&quot;form-label&quot;&gt;Username&lt;/label&gt;<br/>
+
+                   &lt;input type=&quot;text&quot;
+id=&quot;registerUsername&quot; class=&quot;form-control&quot;
+required&gt;<br/>
+                &lt;/div&gt;<br/>
+               
+&lt;div class=&quot;mb-2&quot;&gt;<br/>
+                    &lt;label
+for=&quot;registerPassword&quot; class=&quot;form-label&quot;&gt;Password&lt;/label&gt;<br/>
+
+                   &lt;input type=&quot;password&quot;
+id=&quot;registerPassword&quot; class=&quot;form-control&quot;
+required&gt;<br/>
+                &lt;/div&gt;<br/>
+               
+&lt;div class=&quot;mb-3&quot;&gt;<br/>
+                    &lt;label
+for=&quot;registerPassword2&quot; class=&quot;form-label&quot;&gt;Confirm
+Password&lt;/label&gt;<br/>
+                    &lt;input
+type=&quot;password&quot; id=&quot;registerPassword2&quot;
+class=&quot;form-control&quot; required&gt;<br/>
+               
+&lt;/div&gt;<br/>
+                &lt;button type=&quot;submit&quot;
+class=&quot;btn btn-success w-100&quot;&gt;Register&lt;/button&gt;<br/>
+
+               &lt;div class=&quot;mt-2 text-center&quot;&gt;<br/>
+  
+                 &lt;a href=&quot;#&quot; id=&quot;showLoginLink&quot;&gt;Back
+to Login&lt;/a&gt;<br/>
+                &lt;/div&gt;<br/>
+           
+&lt;/form&gt;<br/>
+            &lt;div id=&quot;registerMsg&quot;
+class=&quot;mt-2 text-center&quot;&gt;&lt;/div&gt;<br/>
+       
+&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+    &lt;!-- END TITLE SCREEN
+--&gt;<br/>
+<br/>
+    &lt;!-- MAIN APP CONTENT --&gt;<br/>
+    &lt;div
+class=&quot;container&quot; id=&quot;mainApp&quot; style=&quot;display:
+none;&quot;&gt;<br/>
+        &lt;div class=&quot;header
+text-center&quot;&gt;<br/>
+            &lt;h1&gt;Truck Border
+Clearance System&lt;/h1&gt;<br/>
+            &lt;p class=&quot;lead&quot;&gt;Track
+and manage truck crossing clearance status&lt;/p&gt;<br/>
+           
+&lt;div id=&quot;loggedInAs&quot; class=&quot;mt-2 small&quot;&gt;&lt;/div&gt;<br/>
+
+           &lt;button class=&quot;btn btn-sm btn-secondary mt-2&quot;
+id=&quot;logoutBtn&quot;&gt;Logout&lt;/button&gt;<br/>
+       
+&lt;/div&gt;<br/>
+<br/>
+        &lt;div id=&quot;adminPanel&quot;
+class=&quot;admin-section d-none&quot;&gt;<br/>
+            &lt;h5&gt;Admin
+Panel&lt;/h5&gt;<br/>
+            &lt;div&gt;<br/>
+               
+&lt;strong&gt;All Users:&lt;/strong&gt;<br/>
+                &lt;ul
+id=&quot;adminUserList&quot; class=&quot;mb-2&quot;&gt;&lt;/ul&gt;<br/>
+
+           &lt;/div&gt;<br/>
+            &lt;div&gt;<br/>
+           
+    &lt;label class=&quot;form-label&quot;&gt;Delete User&lt;/label&gt;<br/>
+
+               &lt;div class=&quot;d-flex mb-2&quot;&gt;<br/>
+       
+            &lt;input type=&quot;text&quot; id=&quot;adminDeleteUser&quot;
+class=&quot;form-control me-2&quot; placeholder=&quot;Username&quot;&gt;<br/>
+
+                   &lt;button class=&quot;btn btn-danger&quot;
+id=&quot;deleteUserBtn&quot;&gt;Delete&lt;/button&gt;<br/>
+          
+     &lt;/div&gt;<br/>
+                &lt;div id=&quot;adminUserMsg&quot;
+class=&quot;mb-2&quot;&gt;&lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+
+           &lt;div&gt;<br/>
+                &lt;label
+class=&quot;form-label&quot;&gt;Add/Edit Any Record&lt;/label&gt;<br/>
+
+               &lt;form id=&quot;adminRecordForm&quot; class=&quot;row
+g-2&quot;&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;text&quot;
+class=&quot;form-control&quot; id=&quot;adminTargetUser&quot;
+placeholder=&quot;Target Username (required)&quot;&gt;<br/>
+         
+          &lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;text&quot;
+class=&quot;form-control&quot; id=&quot;adminTruckNumber&quot;
+placeholder=&quot;Truck Number&quot; required&gt;<br/>
+              
+     &lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;text&quot;
+class=&quot;form-control&quot; id=&quot;adminAgentName&quot;
+placeholder=&quot;Agent Name&quot; required&gt;<br/>
+                
+   &lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;text&quot;
+class=&quot;form-control&quot; id=&quot;adminBorder&quot;
+placeholder=&quot;Border&quot; required&gt;<br/>
+                   
+&lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;date&quot;
+class=&quot;form-control&quot; id=&quot;adminDateLoaded&quot;
+placeholder=&quot;Date Loaded&quot; required&gt;<br/>
+               
+    &lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;input type=&quot;date&quot;
+class=&quot;form-control&quot; id=&quot;adminDateCleared&quot;
+placeholder=&quot;Date Cleared&quot;&gt;<br/>
+                   
+&lt;/div&gt;<br/>
+                    &lt;div class=&quot;col-12
+col-md-6&quot;&gt;<br/>
+                        &lt;select
+class=&quot;form-select&quot; id=&quot;adminStatus&quot; required&gt;<br/>
+
+                           &lt;option value=&quot;&quot;&gt;Status&lt;/option&gt;<br/>
+
+                           &lt;option
+value=&quot;pending&quot;&gt;Pending&lt;/option&gt;<br/>
+            
+               &lt;option value=&quot;cleared&quot;&gt;Cleared&lt;/option&gt;<br/>
+
+                           &lt;option
+value=&quot;rejected&quot;&gt;Rejected&lt;/option&gt;<br/>
+          
+             &lt;/select&gt;<br/>
+                    &lt;/div&gt;<br/>
+
+                   &lt;div class=&quot;col-12 col-md-6&quot;&gt;<br/>
+
+                       &lt;input type=&quot;text&quot;
+class=&quot;form-control&quot; id=&quot;adminComments&quot;
+placeholder=&quot;Comments&quot;&gt;<br/>
+                    &lt;/div&gt;<br/>
+
+                   &lt;div class=&quot;col-12&quot;&gt;<br/>
+        
+               &lt;button type=&quot;submit&quot; class=&quot;btn
+btn-success w-100&quot;&gt;Add Record to User&lt;/button&gt;<br/>
+   
+                &lt;/div&gt;<br/>
+                &lt;/form&gt;<br/>
+
+               &lt;div id=&quot;adminRecordMsg&quot;
+class=&quot;mt-2&quot;&gt;&lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+
+       &lt;/div&gt;<br/>
+<br/>
+        &lt;div class=&quot;row&quot;&gt;<br/>
+
+           &lt;div class=&quot;col-md-4&quot;&gt;<br/>
+              
+ &lt;!-- Agent Registration Card --&gt;<br/>
+                &lt;div
+class=&quot;card mb-3&quot;&gt;<br/>
+                    &lt;div
+class=&quot;card-header bg-success text-white&quot;&gt;<br/>
+        
+               &lt;h5&gt;Register New Agent&lt;/h5&gt;<br/>
+         
+          &lt;/div&gt;<br/>
+                    &lt;div
+class=&quot;card-body&quot;&gt;<br/>
+                        &lt;form
+id=&quot;agentForm&quot;&gt;<br/>
+                            &lt;div
+class=&quot;mb-3&quot;&gt;<br/>
+                               
+&lt;label for=&quot;newAgentName&quot; class=&quot;form-label&quot;&gt;Agent
+Name&lt;/label&gt;<br/>
+                                &lt;input
+type=&quot;text&quot; class=&quot;form-control&quot;
+id=&quot;newAgentName&quot; required&gt;<br/>
+                       
+    &lt;/div&gt;<br/>
+                            &lt;button
+type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Register
+Agent&lt;/button&gt;<br/>
+                            &lt;div
+id=&quot;agentMsg&quot; class=&quot;mt-2&quot;&gt;&lt;/div&gt;<br/>
+ 
+                      &lt;/form&gt;<br/>
+                    &lt;/div&gt;<br/>
+
+               &lt;/div&gt;<br/>
+                &lt;div
+class=&quot;card&quot;&gt;<br/>
+                    &lt;div
+class=&quot;card-header bg-primary text-white&quot;&gt;<br/>
+        
+               &lt;h5&gt;Add New Clearance Record&lt;/h5&gt;<br/>
+   
+                &lt;/div&gt;<br/>
+                    &lt;div
+class=&quot;card-body&quot;&gt;<br/>
+                        &lt;!--
+Import from Excel Section --&gt;<br/>
+                        &lt;div
+class=&quot;mb-3&quot;&gt;<br/>
+                            &lt;label
+class=&quot;form-label&quot;&gt;Import from Excel&lt;/label&gt;<br/>
+
+                           &lt;input type=&quot;file&quot;
+id=&quot;importExcel&quot; accept=&quot;.xlsx,.xls&quot;
+class=&quot;form-control mb-2&quot;&gt;<br/>
+                        
+   &lt;div class=&quot;d-flex gap-2&quot;&gt;<br/>
+                  
+             &lt;button id=&quot;importBtn&quot; class=&quot;btn
+btn-success&quot;&gt;Import&lt;/button&gt;<br/>
+                     
+          &lt;button id=&quot;showFormatBtn&quot; type=&quot;button&quot;
+class=&quot;btn btn-info&quot;&gt;Show</p>
+<p style="line-height: 100%; margin-bottom: 0in"> Format&lt;/button&gt;<br/>
+
+                           &lt;/div&gt;<br/>
+                       
+&lt;/div&gt;<br/>
+                        &lt;form
+id=&quot;clearanceForm&quot;&gt;<br/>
+                           
+&lt;div class=&quot;mb-3&quot;&gt;<br/>
+                             
+  &lt;label for=&quot;truckNumber&quot; class=&quot;form-label&quot;&gt;Truck
+Number&lt;/label&gt;<br/>
+                                &lt;input
+type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;truckNumber&quot;
+required&gt;<br/>
+                            &lt;/div&gt;<br/>
+     
+                      &lt;div class=&quot;mb-3&quot;&gt;<br/>
+       
+                        &lt;label for=&quot;agentName&quot;
+class=&quot;form-label&quot;&gt;Agent Name&lt;/label&gt;<br/>
+       
+                        &lt;select class=&quot;form-select&quot;
+id=&quot;agentName&quot; required&gt;<br/>
+                          
+         &lt;!-- Dynamically populated --&gt;<br/>
+                  
+             &lt;/select&gt;<br/>
+                            &lt;/div&gt;<br/>
+
+                           &lt;div class=&quot;mb-3&quot;&gt;<br/>
+  
+                             &lt;label for=&quot;border&quot;
+class=&quot;form-label&quot;&gt;Border Crossing&lt;/label&gt;<br/>
+  
+                             &lt;select class=&quot;form-select&quot;
+id=&quot;border&quot; required&gt;<br/>
+                             
+      &lt;option value=&quot;&quot;&gt;Select Border&lt;/option&gt;<br/>
+
+                                   &lt;option value=&quot;North
+Border&quot;&gt;North Border&lt;/option&gt;<br/>
+                    
+               &lt;option value=&quot;East Border&quot;&gt;East
+Border&lt;/option&gt;<br/>
+                                   
+&lt;option value=&quot;South Border&quot;&gt;South Border&lt;/option&gt;<br/>
+
+                                   &lt;option value=&quot;West
+Border&quot;&gt;West Border&lt;/option&gt;<br/>
+                     
+          &lt;/select&gt;<br/>
+                            &lt;/div&gt;<br/>
+
+                           &lt;div class=&quot;mb-3&quot;&gt;<br/>
+  
+                             &lt;label for=&quot;dateLoaded&quot;
+class=&quot;form-label&quot;&gt;Date Loaded&lt;/label&gt;<br/>
+      
+                         &lt;input type=&quot;date&quot;
+class=&quot;form-control&quot; id=&quot;dateLoaded&quot; required&gt;<br/>
+
+                           &lt;/div&gt;<br/>
+                        
+   &lt;div class=&quot;mb-3&quot;&gt;<br/>
+                          
+     &lt;label for=&quot;dateCleared&quot; class=&quot;form-label&quot;&gt;Date
+Cleared&lt;/label&gt;<br/>
+                                &lt;input
+type=&quot;date&quot; class=&quot;form-control&quot;
+id=&quot;dateCleared&quot;&gt;<br/>
+                           
+&lt;/div&gt;<br/>
+                            &lt;div class=&quot;mb-3&quot;&gt;<br/>
+
+                               &lt;label for=&quot;status&quot;
+class=&quot;form-label&quot;&gt;Status&lt;/label&gt;<br/>
+           
+                    &lt;select class=&quot;form-select&quot;
+id=&quot;status&quot; required&gt;<br/>
+                             
+      &lt;option value=&quot;pending&quot;&gt;Pending&lt;/option&gt;<br/>
+
+                                   &lt;option
+value=&quot;cleared&quot;&gt;Cleared&lt;/option&gt;<br/>
+            
+                       &lt;option value=&quot;rejected&quot;&gt;Rejected&lt;/option&gt;<br/>
+
+                               &lt;/select&gt;<br/>
+                 
+          &lt;/div&gt;<br/>
+                            &lt;div
+class=&quot;mb-3&quot;&gt;<br/>
+                               
+&lt;label for=&quot;comments&quot;
+class=&quot;form-label&quot;&gt;Comments&lt;/label&gt;<br/>
+         
+                      &lt;textarea class=&quot;form-control&quot;
+id=&quot;comments&quot; rows=&quot;2&quot;&gt;&lt;/textarea&gt;<br/>
+
+                           &lt;/div&gt;<br/>
+                        
+   &lt;button type=&quot;submit&quot; class=&quot;btn
+btn-primary&quot;&gt;Submit&lt;/button&gt;<br/>
+                     
+  &lt;/form&gt;<br/>
+                    &lt;/div&gt;<br/>
+          
+     &lt;/div&gt;<br/>
+                &lt;!-- Sample Format Modal
+--&gt;<br/>
+                &lt;div class=&quot;modal fade&quot;
+id=&quot;formatModal&quot; tabindex=&quot;-1&quot;
+aria-labelledby=&quot;formatModalLabel&quot; aria-hidden=&quot;true&quot;&gt;<br/>
+
+                 &lt;div class=&quot;modal-dialog modal-lg
+modal-dialog-centered&quot;&gt;<br/>
+                    &lt;div
+class=&quot;modal-content&quot;&gt;<br/>
+                      &lt;div
+class=&quot;modal-header&quot;&gt;<br/>
+                        &lt;h5
+class=&quot;modal-title&quot; id=&quot;formatModalLabel&quot;&gt;Excel
+Import Format&lt;/h5&gt;<br/>
+                        &lt;button
+type=&quot;button&quot; class=&quot;btn-close&quot;
+data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;<br/>
+
+                     &lt;/div&gt;<br/>
+                      &lt;div
+class=&quot;modal-body&quot;&gt;<br/>
+                        &lt;p&gt;<br/>
+
+                         &lt;strong&gt;Please use the following
+column headers in your Excel file:&lt;/strong&gt;<br/>
+              
+         &lt;/p&gt;<br/>
+                        &lt;div
+class=&quot;table-responsive&quot;&gt;<br/>
+                         
+&lt;table class=&quot;sample-table&quot;&gt;<br/>
+                   
+        &lt;thead&gt;<br/>
+                              &lt;tr
+class=&quot;bg-light&quot;&gt;<br/>
+                               
+&lt;th&gt;truckNumber&lt;/th&gt;<br/>
+                               
+&lt;th&gt;agentName&lt;/th&gt;<br/>
+                               
+&lt;th&gt;border&lt;/th&gt;<br/>
+                               
+&lt;th&gt;dateLoaded&lt;/th&gt;<br/>
+                               
+&lt;th&gt;dateCleared&lt;/th&gt;<br/>
+                               
+&lt;th&gt;status&lt;/th&gt;<br/>
+                               
+&lt;th&gt;comments&lt;/th&gt;<br/>
+                             
+&lt;/tr&gt;<br/>
+                            &lt;/thead&gt;<br/>
+    
+                       &lt;tbody&gt;<br/>
+                           
+  &lt;tr&gt;<br/>
+                                &lt;td&gt;TRK-1001&lt;/td&gt;<br/>
+
+                               &lt;td&gt;John Smith&lt;/td&gt;<br/>
+ 
+                              &lt;td&gt;North Border&lt;/td&gt;<br/>
+
+                               &lt;td&gt;2025-07-01&lt;/td&gt;<br/>
+ 
+                              &lt;td&gt;2025-07-03&lt;/td&gt;<br/>
+  
+                             &lt;td&gt;cleared&lt;/td&gt;<br/>
+      
+                         &lt;td&gt;All documents verified&lt;/td&gt;<br/>
+
+                             &lt;/tr&gt;<br/>
+                       
+      &lt;tr&gt;<br/>
+                               
+&lt;td&gt;TRK-1002&lt;/td&gt;<br/>
+                               
+&lt;td&gt;Jane Doe&lt;/td&gt;<br/>
+                               
+&lt;td&gt;South Border&lt;/td&gt;<br/>
+                              
+ &lt;td&gt;2025-07-02&lt;/td&gt;<br/>
+                               
+&lt;td&gt;&lt;/td&gt;<br/>
+                               
+&lt;td&gt;pending&lt;/td&gt;<br/>
+                               
+&lt;td&gt;Awaiting approval&lt;/td&gt;<br/>
+                         
+    &lt;/tr&gt;<br/>
+                            &lt;/tbody&gt;<br/>
+
+                         &lt;/table&gt;<br/>
+                       
+&lt;/div&gt;<br/>
+                        &lt;ul class=&quot;mt-3&quot;&gt;<br/>
+
+                           &lt;li&gt;&lt;strong&gt;Required
+columns:&lt;/strong&gt; &lt;code&gt;truckNumber&lt;/code&gt;,
+&lt;code&gt;agentName&lt;/code&gt;, &lt;code&gt;border&lt;/code&gt;,
+&lt;code&gt;dateLoaded&lt;/code&gt;, &lt;code&gt;status&lt;/code&gt;&lt;/li&gt;<br/>
+
+                           &lt;li&gt;&lt;strong&gt;Optional
+columns:&lt;/strong&gt; &lt;code&gt;dateCleared&lt;/code&gt;,
+&lt;code&gt;comments&lt;/code&gt;&lt;/li&gt;<br/>
+                   
+        &lt;li&gt;&lt;strong&gt;status&lt;/strong&gt; must be one of:
+&lt;code&gt;pending&lt;/code&gt;, &lt;code&gt;cleared&lt;/code&gt;,
+&lt;code&gt;rejected&lt;/code&gt;&lt;/li&gt;<br/>
+                   
+        &lt;li&gt;Date columns should use the &lt;code&gt;YYYY-MM-DD&lt;/code&gt;
+format&lt;/li&gt;<br/>
+                        &lt;/ul&gt;<br/>
+     
+                &lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+
+                 &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+
+               &lt;!-- Reports Section (hidden on small screens for
+better UX) --&gt;<br/>
+                &lt;div class=&quot;report-section
+d-md-none&quot;&gt;<br/>
+                    &lt;h5&gt;Reports&lt;/h5&gt;<br/>
+
+                   &lt;button class=&quot;btn btn-outline-secondary
+btn-sm mb-2 w-100&quot; onclick=&quot;showReport('month')&quot;&gt;Cleared
+Trucks by Month&lt;/button&gt;<br/>
+                    &lt;button
+class=&quot;btn btn-outline-secondary btn-sm w-100&quot;
+onclick=&quot;showReport('agent')&quot;&gt;Cleared Trucks by
+Agent&lt;/button&gt;<br/>
+                &lt;/div&gt;<br/>
+         
+  &lt;/div&gt;<br/>
+<br/>
+            &lt;div class=&quot;col-md-8&quot;&gt;<br/>
+
+               &lt;div class=&quot;filter-section&quot;&gt;<br/>
+    
+               &lt;h5&gt;Filter Records&lt;/h5&gt;<br/>
+             
+      &lt;div class=&quot;row&quot;&gt;<br/>
+                       
+&lt;div class=&quot;col-md-3&quot;&gt;<br/>
+                         
+  &lt;label for=&quot;filterStatus&quot;
+class=&quot;form-label&quot;&gt;Status&lt;/label&gt;<br/>
+           
+                &lt;select class=&quot;form-select&quot;
+id=&quot;filterStatus&quot;&gt;<br/>
+                               
+&lt;option value=&quot;all&quot;&gt;All Statuses&lt;/option&gt;<br/>
+
+                               &lt;option
+value=&quot;pending&quot;&gt;Pending&lt;/option&gt;<br/>
+            
+                   &lt;option value=&quot;cleared&quot;&gt;Cleared&lt;/option&gt;<br/>
+
+                               &lt;option
+value=&quot;rejected&quot;&gt;Rejected&lt;/option&gt;<br/>
+          
+                 &lt;/select&gt;<br/>
+                        &lt;/div&gt;<br/>
+
+                       &lt;div class=&quot;col-md-3&quot;&gt;<br/>
+  
+                         &lt;label for=&quot;filterBorder&quot;
+class=&quot;form-label&quot;&gt;Border&lt;/label&gt;<br/>
+           
+                &lt;select class=&quot;form-select&quot;
+id=&quot;filterBorder&quot;&gt;<br/>
+                               
+&lt;option value=&quot;all&quot;&gt;All Borders&lt;/option&gt;<br/>
+ 
+                              &lt;option value=&quot;North
+Border&quot;&gt;North Border&lt;/option&gt;<br/>
+                    
+           &lt;option value=&quot;East Border&quot;&gt;East
+Border&lt;/option&gt;<br/>
+                                &lt;option
+value=&quot;South Border&quot;&gt;South Border&lt;/option&gt;<br/>
+  
+                             &lt;option value=&quot;West Border&quot;&gt;West
+Border&lt;/option&gt;<br/>
+                            &lt;/select&gt;<br/>
+
+                       &lt;/div&gt;<br/>
+                        &lt;div
+class=&quot;col-md-3&quot;&gt;<br/>
+                           
+&lt;label for=&quot;filterDateFrom&quot; class=&quot;form-label&quot;&gt;From
+Date&lt;/label&gt;<br/>
+                            &lt;input
+type=&quot;date&quot; class=&quot;form-control&quot;
+id=&quot;filterDateFrom&quot;&gt;<br/>
+                       
+&lt;/div&gt;<br/>
+                        &lt;div class=&quot;col-md-3&quot;&gt;<br/>
+
+                           &lt;label for=&quot;filterDateTo&quot;
+class=&quot;form-label&quot;&gt;To Date&lt;/label&gt;<br/>
+          
+                 &lt;input type=&quot;date&quot; class=&quot;form-control&quot;
+id=&quot;filterDateTo&quot;&gt;<br/>
+                        &lt;/div&gt;<br/>
+
+                   &lt;/div&gt;<br/>
+                    &lt;div
+class=&quot;row mt-3&quot;&gt;<br/>
+                        &lt;div
+class=&quot;col-md-8&quot;&gt;<br/>
+                           
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot;
+id=&quot;filterSearch&quot; placeholder=&quot;Search by truck number
+or agent...&quot;&gt;<br/>
+                        &lt;/div&gt;<br/>
+
+                       &lt;div class=&quot;col-md-4&quot;&gt;<br/>
+  
+                         &lt;button id=&quot;resetFilters&quot;
+class=&quot;btn btn-secondary w-100&quot;&gt;Reset Filters&lt;/button&gt;<br/>
+
+                       &lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+
+               &lt;/div&gt;<br/>
+<br/>
+                &lt;div
+class=&quot;report-section d-none d-md-block&quot;&gt;<br/>
+         
+          &lt;h5&gt;Reports&lt;/h5&gt;<br/>
+                   
+&lt;button class=&quot;btn btn-outline-secondary btn-sm mb-2&quot;
+onclick=&quot;showReport('month')&quot;&gt;Cleared Trucks by
+Month&lt;/button&gt;<br/>
+                    &lt;button class=&quot;btn
+btn-outline-secondary btn-sm&quot;
+onclick=&quot;showReport('agent')&quot;&gt;Cleared Trucks by
+Agent&lt;/button&gt;<br/>
+                &lt;/div&gt;<br/>
+<br/>
+   
+            &lt;!-- Cleared Reports Table --&gt;<br/>
+               
+&lt;div id=&quot;reportModal&quot; class=&quot;modal fade&quot;
+tabindex=&quot;-1&quot; aria-hidden=&quot;true&quot;&gt;<br/>
+       
+          &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;<br/>
+  
+                 &lt;div class=&quot;modal-content&quot;&gt;<br/>
+   
+                  &lt;div class=&quot;modal-header&quot;&gt;<br/>
+   
+                    &lt;h5 class=&quot;modal-title&quot;
+id=&quot;reportTitle&quot;&gt;Report&lt;/h5&gt;<br/>
+                
+       &lt;button</p>
+<p style="line-height: 100%; margin-bottom: 0in"> type=&quot;button&quot;
+class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot;
+aria-label=&quot;Close&quot;&gt;&lt;/button&gt;<br/>
+                
+     &lt;/div&gt;<br/>
+                      &lt;div
+class=&quot;modal-body&quot; id=&quot;reportBody&quot;&gt;<br/>
+     
+                  &lt;!-- Report content here --&gt;<br/>
+           
+          &lt;/div&gt;<br/>
+                    &lt;/div&gt;<br/>
+   
+              &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+<br/>
+
+               &lt;div class=&quot;card&quot;&gt;<br/>
+              
+     &lt;div class=&quot;card-header bg-primary text-white&quot;&gt;<br/>
+
+                       &lt;h5&gt;Clearance Records&lt;/h5&gt;<br/>
+  
+                 &lt;/div&gt;<br/>
+                    &lt;div
+class=&quot;card-body&quot;&gt;<br/>
+                        &lt;div
+class=&quot;table-responsive&quot;&gt;<br/>
+                         
+  &lt;table class=&quot;table table-hover&quot;&gt;<br/>
+            
+                   &lt;thead&gt;<br/>
+                               
+    &lt;tr&gt;<br/>
+                                        &lt;th&gt;Truck
+#&lt;/th&gt;<br/>
+                                       
+&lt;th&gt;Agent&lt;/th&gt;<br/>
+                                     
+  &lt;th&gt;Border&lt;/th&gt;<br/>
+                                  
+     &lt;th&gt;Date Loaded&lt;/th&gt;<br/>
+                          
+             &lt;th&gt;Date Cleared&lt;/th&gt;<br/>
+                 
+                      &lt;th&gt;Status&lt;/th&gt;<br/>
+              
+                         &lt;th&gt;Actions&lt;/th&gt;<br/>
+          
+                         &lt;/tr&gt;<br/>
+                           
+    &lt;/thead&gt;<br/>
+                                &lt;tbody
+id=&quot;recordsTable&quot;&gt;<br/>
+                                
+   &lt;!-- Records will be loaded here --&gt;<br/>
+                  
+             &lt;/tbody&gt;<br/>
+                           
+&lt;/table&gt;<br/>
+                        &lt;/div&gt;<br/>
+       
+            &lt;/div&gt;<br/>
+                &lt;/div&gt;<br/>
+     
+      &lt;/div&gt;<br/>
+        &lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+<br/>
+
+   &lt;!-- Modal for viewing full record --&gt;<br/>
+    &lt;div
+class=&quot;modal fade&quot; id=&quot;recordModalView&quot;
+tabindex=&quot;-1&quot; aria-hidden=&quot;true&quot;&gt;<br/>
+       
+&lt;div class=&quot;modal-dialog&quot;&gt;<br/>
+            &lt;div
+class=&quot;modal-content&quot;&gt;<br/>
+                &lt;div
+class=&quot;modal-header&quot;&gt;<br/>
+                    &lt;h5
+class=&quot;modal-title&quot;&gt;Clearance Details&lt;/h5&gt;<br/>
+  
+                 &lt;button type=&quot;button&quot; class=&quot;btn-close&quot;
+data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;<br/>
+
+               &lt;/div&gt;<br/>
+                &lt;div
+class=&quot;modal-body&quot; id=&quot;modalBody&quot;&gt;<br/>
+      
+             &lt;!-- Record details will be loaded here --&gt;<br/>
+ 
+              &lt;/div&gt;<br/>
+                &lt;div
+class=&quot;modal-footer&quot;&gt;<br/>
+                    &lt;button
+type=&quot;button&quot; class=&quot;btn btn-secondary&quot;
+data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;<br/>
+      
+         &lt;/div&gt;<br/>
+            &lt;/div&gt;<br/>
+       
+&lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+<br/>
+    &lt;script
+src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;<br/>
+
+   &lt;script&gt;<br/>
+        // --- Backend URL<br/>
+        const
+API_URL = 'http://localhost:3001/api/records';<br/>
+        const
+REPORT_MONTH_URL = 'http://localhost:3001/api/report/cleared';<br/>
+ 
+      const REPORT_AGENT_URL =
+'http://localhost:3001/api/report/cleared-by-agent';<br/>
+       
+const USER_API_URL = 'http://localhost:3001/api/users';<br/>
+<br/>
+  
+     let clearanceRecords = [];<br/>
+        let recordModal = new
+bootstrap.Modal(document.getElementById('recordModalView'));<br/>
+   
+    let reportModal = new
+bootstrap.Modal(document.getElementById('reportModal'));<br/>
+       
+const modalBody = document.getElementById('modalBody');<br/>
+       
+const reportBody = document.getElementById('reportBody');<br/>
+      
+ const reportTitle = document.getElementById('reportTitle');<br/>
+   
+    let currentUser = null;<br/>
+        let isAdmin = false;<br/>
+<br/>
+
+       // AGENTS LOGIC<br/>
+        let agents = [&quot;John Smith&quot;,
+&quot;Maria Garcia&quot;, &quot;Robert Johnson&quot;, &quot;Sarah
+Williams&quot;];<br/>
+        const agentForm =
+document.getElementById('agentForm');<br/>
+        const
+agentNameSelect = document.getElementById('agentName');<br/>
+       
+const agentMsg = document.getElementById('agentMsg');<br/>
+<br/>
+    
+   function renderAgentOptions() {<br/>
+           
+agentNameSelect.innerHTML = '&lt;option value=&quot;&quot;&gt;Select
+Agent&lt;/option&gt;';<br/>
+            agents.forEach(agent =&gt; {<br/>
+
+               agentNameSelect.innerHTML += &lt;option
+value=&quot;${agent}&quot;&gt;${agent}&lt;/option&gt;;<br/>
+         
+  });<br/>
+        }<br/>
+<br/>
+       
+document.addEventListener('DOMContentLoaded', function() {<br/>
+     
+      renderAgentOptions();<br/>
+<br/>
+            // Show Excel
+format modal<br/>
+            var formatModal = new
+bootstrap.Modal(document.getElementById('formatModal'));<br/>
+       
+   
+document.getElementById('showFormatBtn').addEventListener('click',
+function () {<br/>
+                formatModal.show();<br/>
+         
+  });<br/>
+<br/>
+            // Title/Login/Register logic<br/>
+     
+      setupAuthScreen();<br/>
+        });<br/>
+<br/>
+       
+agentForm.addEventListener('submit', function(e) {<br/>
+           
+e.preventDefault();<br/>
+            const newAgent =
+document.getElementById('newAgentName').value.trim();<br/>
+          
+ if (!newAgent) {<br/>
+                agentMsg.innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;Please enter an agent
+name.&lt;/span&gt;';<br/>
+                return;<br/>
+            }<br/>
+
+           if (agents.includes(newAgent)) {<br/>
+               
+agentMsg.innerHTML = '&lt;span class=&quot;text-warning&quot;&gt;Agent
+already registered.&lt;/span&gt;';<br/>
+                return;<br/>
+
+           }<br/>
+            agents.push(newAgent);<br/>
+           
+renderAgentOptions();<br/>
+            agentMsg.innerHTML = '&lt;span
+class=&quot;text-success&quot;&gt;Agent registered
+successfully!&lt;/span&gt;';<br/>
+           
+document.getElementById('newAgentName').value = '';<br/>
+       
+});<br/>
+<br/>
+        // --- TITLE SCREEN LOGIC (LOGIN/REGISTER)
+---<br/>
+        function setupAuthScreen() {<br/>
+            const
+titleScreen = document.getElementById('titleScreen');<br/>
+          
+ const mainApp = document.getElementById('mainApp');<br/>
+           
+const loginCard = document.getElementById('loginCard');<br/>
+        
+   const registerCard = document.getElementById('registerCard');<br/>
+
+           const loginForm = document.getElementById('loginForm');<br/>
+
+           const registerForm =
+document.getElementById('registerForm');<br/>
+            const
+loginMsg = document.getElementById('loginMsg');<br/>
+           
+const registerMsg = document.getElementById('registerMsg');<br/>
+    
+       const showRegisterLink =
+document.getElementById('showRegisterLink');<br/>
+            const
+showLoginLink = document.getElementById('showLoginLink');<br/>
+      
+     const logoutBtn = document.getElementById('logoutBtn');<br/>
+   
+        const loggedInAs = document.getElementById('loggedInAs');<br/>
+<br/>
+
+           function showLogin() {<br/>
+               
+loginCard.classList.remove('hidden');<br/>
+               
+registerCard.classList.add('hidden');<br/>
+               
+loginMsg.innerHTML = '';<br/>
+                registerMsg.innerHTML =
+'';<br/>
+            }<br/>
+            function showRegister() {<br/>
+
+               loginCard.classList.add('hidden');<br/>
+              
+ registerCard.classList.remove('hidden');<br/>
+               
+loginMsg.innerHTML = '';<br/>
+                registerMsg.innerHTML =
+'';<br/>
+            }<br/>
+           
+showRegisterLink.addEventListener('click', function(e) {<br/>
+       
+        e.preventDefault();<br/>
+                showRegister();<br/>
+
+           });<br/>
+           
+showLoginLink.addEventListener('click', function(e) {<br/>
+          
+     e.preventDefault();<br/>
+                showLogin();<br/>
+     
+      });<br/>
+            logoutBtn.addEventListener('click',
+function() {<br/>
+                currentUser = null;<br/>
+          
+     isAdmin = false;<br/>
+                titleScreen.style.display
+= 'flex';<br/>
+                mainApp.style.display = 'none';<br/>
+ 
+             
+document.getElementById('adminPanel').classList.add('d-none');<br/>
+ 
+          });<br/>
+<br/>
+            // Registration<br/>
+           
+registerForm.addEventListener('submit', function(e) {<br/>
+          
+     e.preventDefault();<br/>
+                const username =
+document.getElementById('registerUsername').value.trim();<br/>
+      
+         const password =
+document.getElementById('registerPassword').value;<br/>
+             
+  const password2 =
+document.getElementById('registerPassword2').value;<br/>
+<br/>
+      
+         if (!username || !password || !password2) {<br/>
+           
+        registerMsg.innerHTML = '&lt;span class=&quot;text-danger&quot;&gt;All
+fields required.&lt;/span&gt;';<br/>
+                    return;<br/>
+
+               }<br/>
+                if (password !== password2) {<br/>
+
+                   registerMsg.innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;Passwords do not match.&lt;/span&gt;';<br/>
+
+                   return;<br/>
+                }<br/>
+              
+ fetch(USER_API_URL + '/register', {<br/>
+                    method:
+'POST',<br/>
+                    headers: {'Content-Type':
+'application/json'},<br/>
+                    body: JSON.stringify({
+username, password })<br/>
+                })<br/>
+               
+.then(res =&gt; res.json())<br/>
+                .then(data =&gt; {<br/>
+
+                   if (data.success) {<br/>
+                       
+registerMsg.innerHTML = '&lt;span class=&quot;text-success&quot;&gt;Registration
+successful! You can sign in now.&lt;/span&gt;';<br/>
+                
+       setTimeout(showLogin, 1200);<br/>
+                    } else
+{<br/>
+                        registerMsg.innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;' + (data.error || 'Registration
+failed.') + '&lt;/span&gt;';<br/>
+                    }<br/>
+        
+       })<br/>
+                .catch(() =&gt; {<br/>
+               
+    registerMsg.innerHTML = '&lt;span class=&quot;text-danger&quot;&gt;Server
+error, try again later.&lt;/span&gt;';<br/>
+                });<br/>
+
+           });<br/>
+<br/>
+            // Login<br/>
+           
+loginForm.addEventListener('submit', function(e) {<br/>
+             
+  e.preventDefault();<br/>
+                const username =
+document.getElementById('loginUsername').value.trim();<br/>
+         
+      const password =
+document.getElementById('loginPassword').value;<br/>
+               
+if (!username || !password) {<br/>
+                   
+loginMsg.innerHTML = '&lt;span class=&quot;text-danger&quot;&gt;All
+fields required.&lt;/span&gt;';<br/>
+                    return;<br/>
+
+               }<br/>
+                fetch(USER_API_URL + '/login',
+{<br/>
+                    method: 'POST',<br/>
+                   
+headers: {'Content-Type': 'application/json'},<br/>
+                 
+  body: JSON.stringify({ username, password })<br/>
+               
+})<br/>
+                .then(res =&gt; res.json())<br/>
+            
+   .then(data =&gt; {<br/>
+                    if (data.success) {<br/>
+
+                       currentUser = username;<br/>
+                 
+      isAdmin = !!data.user.isAdmin;<br/>
+                       
+titleScreen.style.display = 'none';<br/>
+                  
+</p>
+<p style="line-height: 100%; margin-bottom: 0in">     
+mainApp.style.display = 'block';<br/>
+                       
+loggedInAs.innerHTML = Logged in as: &lt;strong&gt;${username}&lt;/strong&gt;
+${isAdmin ? '(admin)' : ''};<br/>
+                       
+fetchRecords();<br/>
+                        if (isAdmin) {<br/>
+    
+                      
+document.getElementById('adminPanel').classList.remove('d-none');<br/>
+
+                           loadAdminPanel();<br/>
+                   
+    } else {<br/>
+                           
+document.getElementById('adminPanel').classList.add('d-none');<br/>
+ 
+                      }<br/>
+                    } else {<br/>
+      
+                 loginMsg.innerHTML = '&lt;span class=&quot;text-danger&quot;&gt;'
++ (data.error || 'Login failed.') + '&lt;/span&gt;';<br/>
+           
+        }<br/>
+                })<br/>
+                .catch(() =&gt;
+{<br/>
+                    loginMsg.innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;Server error, try again
+later.&lt;/span&gt;';<br/>
+                });<br/>
+            });<br/>
+
+       }<br/>
+<br/>
+        // --- ADMIN PANEL LOGIC ---<br/>
+       
+function loadAdminPanel() {<br/>
+            // List all users<br/>
+ 
+          fetch(USER_API_URL + '/all?username=' +
+encodeURIComponent(currentUser))<br/>
+                .then(res =&gt;
+res.json())<br/>
+                .then(users =&gt; {<br/>
+           
+        const list = document.getElementById('adminUserList');<br/>
+ 
+                  list.innerHTML = '';<br/>
+                   
+users.forEach(user =&gt; {<br/>
+                       
+list.innerHTML += &lt;li&gt;${user}&lt;/li&gt;;<br/>
+                
+   });<br/>
+                });<br/>
+            // Delete user<br/>
+
+           document.getElementById('deleteUserBtn').onclick =
+function() {<br/>
+                const user =
+document.getElementById('adminDeleteUser').value.trim();<br/>
+       
+        if (!user) {<br/>
+                   
+document.getElementById('adminUserMsg').innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;Enter username to delete.&lt;/span&gt;';<br/>
+
+                   return;<br/>
+                }<br/>
+              
+ fetch(USER_API_URL + '/' + encodeURIComponent(user), {<br/>
+        
+           method: 'DELETE',<br/>
+                    headers:
+{'Content-Type': 'application/json'},<br/>
+                    body:
+JSON.stringify({ username: currentUser })<br/>
+                })<br/>
+
+               .then(res =&gt; res.json())<br/>
+               
+.then(data =&gt; {<br/>
+                    if (data.success) {<br/>
+
+                      
+document.getElementById('adminUserMsg').innerHTML = '&lt;span
+class=&quot;text-success&quot;&gt;User deleted.&lt;/span&gt;';<br/>
+ 
+                      loadAdminPanel();<br/>
+                    }
+else {<br/>
+                       
+document.getElementById('adminUserMsg').innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;' + (data.error || 'Error') +
+'&lt;/span&gt;';<br/>
+                    }<br/>
+                });<br/>
+
+           };<br/>
+            // Add/Edit Any Record<br/>
+          
+ document.getElementById('adminRecordForm').onsubmit = function(e) {<br/>
+
+               e.preventDefault();<br/>
+                const
+targetUser =
+document.getElementById('adminTargetUser').value.trim();<br/>
+       
+        const truckNumber =
+document.getElementById('adminTruckNumber').value.trim();<br/>
+      
+         const agentName =
+document.getElementById('adminAgentName').value.trim();<br/>
+        
+       const border =
+document.getElementById('adminBorder').value.trim();<br/>
+           
+    const dateLoaded =
+document.getElementById('adminDateLoaded').value;<br/>
+              
+ const dateCleared =
+document.getElementById('adminDateCleared').value;<br/>
+             
+  const status = document.getElementById('adminStatus').value;<br/>
+ 
+              const comments =
+document.getElementById('adminComments').value.trim();<br/>
+         
+      if (!targetUser || !truckNumber || !agentName || !border ||
+!dateLoaded || !status) {<br/>
+                   
+document.getElementById('adminRecordMsg').innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;Fill all required fields.&lt;/span&gt;';<br/>
+
+                   return;<br/>
+                }<br/>
+              
+ fetch(API_URL, {<br/>
+                    method: 'POST',<br/>
+     
+              headers: {'Content-Type': 'application/json'},<br/>
+   
+                body: JSON.stringify({<br/>
+                       
+username: currentUser,<br/>
+                        targetUser,<br/>
+
+                       truckNumber,<br/>
+                       
+agentName,<br/>
+                        border,<br/>
+                
+       dateLoaded,<br/>
+                        dateCleared:
+dateCleared || null,<br/>
+                        status,<br/>
+      
+                 comments<br/>
+                    })<br/>
+          
+     })<br/>
+                .then(res =&gt; res.json())<br/>
+       
+        .then(data =&gt; {<br/>
+                    if (data.success)
+{<br/>
+                       
+document.getElementById('adminRecordMsg').innerHTML = '&lt;span
+class=&quot;text-success&quot;&gt;Record added to ' + targetUser +
+'.&lt;/span&gt;';<br/>
+                        fetchRecords();<br/>
+ 
+                     
+document.getElementById('adminRecordForm').reset();<br/>
+            
+       } else {<br/>
+                       
+document.getElementById('adminRecordMsg').innerHTML = '&lt;span
+class=&quot;text-danger&quot;&gt;' + (data.error || 'Error') +
+'&lt;/span&gt;';<br/>
+                    }<br/>
+                });<br/>
+
+           };<br/>
+        }<br/>
+<br/>
+        // --- INITIALIZATION
+---<br/>
+        document.addEventListener('DOMContentLoaded', () =&gt;
+{<br/>
+            setupEventListeners();<br/>
+        });<br/>
+<br/>
+
+       // --- FETCH RECORDS FROM DATABASE ---<br/>
+        function
+fetchRecords() {<br/>
+            fetch(API_URL + '?username=' +
+encodeURIComponent(currentUser))<br/>
+                .then(res =&gt;
+res.json())<br/>
+                .then(data =&gt; {<br/>
+            
+       clearanceRecords = data || [];<br/>
+                   
+renderTable();<br/>
+                })<br/>
+                .catch(()
+=&gt; {<br/>
+                    clearanceRecords = [];<br/>
+        
+           renderTable();<br/>
+                });<br/>
+        }<br/>
+<br/>
+
+       // --- EVENT LISTENERS ---<br/>
+        function
+setupEventListeners() {<br/>
+           
+form.addEventListener('submit', handleFormSubmit);<br/>
+           
+filterStatus.addEventListener('change', renderTable);<br/>
+          
+ filterBorder.addEventListener('change', renderTable);<br/>
+         
+  filterDateFrom.addEventListener('change', renderTable);<br/>
+      
+     filterDateTo.addEventListener('change', renderTable);<br/>
+     
+      filterSearch.addEventListener('input', renderTable);<br/>
+     
+      resetFilters.addEventListener('click', resetAllFilters);<br/>
+ 
+         
+document.getElementById('importBtn').addEventListener('click',
+handleExcelImport);<br/>
+        }<br/>
+<br/>
+        // --- FORM
+SUBMISSION ---<br/>
+        function handleFormSubmit(e) {<br/>
+     
+      e.preventDefault();<br/>
+<br/>
+            const newRecord = {<br/>
+
+               truckNumber:
+document.getElementById('truckNumber').value,<br/>
+               
+agentName: document.getElementById('agentName').value,<br/>
+         
+      border: document.getElementById('border').value,<br/>
+         
+      dateLoaded: document.getElementById('dateLoaded').value,<br/>
+ 
+              dateCleared:
+document.getElementById('dateCleared').value || null,<br/>
+          
+     status: document.getElementById('status').value,<br/>
+          
+     comments: document.getElementById('comments').value,<br/>
+      
+         username: currentUser<br/>
+            };<br/>
+<br/>
+       
+    if (newRecord.agentName &amp;&amp;
+!agents.includes(newRecord.agentName)) {<br/>
+               
+agents.push(newRecord.agentName);<br/>
+               
+renderAgentOptions();<br/>
+            }<br/>
+<br/>
+           
+fetch(API_URL, {<br/>
+                method: 'POST',<br/>
+          
+     headers: {'Content-Type': 'application/json'},<br/>
+            
+   body: JSON.stringify(newRecord)<br/>
+            })<br/>
+         
+  .then(res =&gt; res.json())<br/>
+            .then(resData =&gt; {<br/>
+
+               if (resData.success) {<br/>
+                   
+newRecord.id = resData.id;<br/>
+                   
+clearanceRecords.unshift(newRecord);<br/>
+                   
+renderTable();<br/>
+                    form.reset();<br/>
+          
+         alert('Clearance record added successfully!');<br/>
+        
+       } else {<br/>
+                    alert('Error: ' +
+(resData.error || 'Failed to add record'));<br/>
+                }<br/>
+
+           })<br/>
+            .catch(() =&gt; {<br/>
+               
+newRecord.id = Math.random().toString(36).slice(2);<br/>
+            
+   clearanceRecords.unshift(newRecord);<br/>
+               
+renderTable();<br/>
+                form.reset();<br/>
+              
+ alert('Clearance record added (offline/demo mode).');<br/>
+         
+  });<br/>
+        }<br/>
+<br/>
+        // --- RENDER TABLE ---<br/>
+
+       function renderTable() {<br/>
+            const statusFilter =
+filterStatus.value;<br/>
+            const borderFilter =
+filterBorder.value;<br/>
+            const dateFrom =
+filterDateFrom.value;<br/>
+            const dateTo =
+filterDateTo.value;<br/>
+            const searchTerm =
+filterSearch.value.toLowerCase();<br/>
+<br/>
+            let
+filteredRecords = clearanceRecords.filter(record =&gt; {<br/>
+       
+        if (statusFilter !== 'all' &amp;&amp; record.status !==
+statusFilter) return false;<br/>
+                if (borderFilter !==
+'all' &amp;&amp; record.border !== borderFilter) return false;<br/>
+ 
+              if (dateFrom &amp;&amp; record.dateLoaded &lt;
+dateFrom) return false;<br/>
+                if (dateTo &amp;&amp;
+record.dateLoaded &gt; dateTo) return false;<br/>
+                if
+(searchTerm &amp;&amp;<br/>
+                   
+!record.truckNumber.toLowerCase().includes(searchTerm) &amp;&amp;<br/>
+
+                  
+!record.agentName.toLowerCase().includes(searchTerm)) {<br/>
+        
+           return false;<br/>
+                }<br/>
+               
+return true;<br/>
+            });<br/>
+<br/>
+           
+filteredRecords.sort((a, b) =&gt; new Date(b.dateLoaded) - new
+Date(a.dateLoaded));<br/>
+<br/>
+            let tableHTML = '';<br/>
+
+           filteredRecords.forEach(record =&gt; {<br/>
+              
+ const statusClass = status-${record.status};<br/>
+               
+const statusDisplay = record.status.charAt(0).toUpperCase() +
+record.status.slice(1);<br/>
+                const dateClearedDisplay
+= record.dateCleared ? formatDate(record.dateCleared) : 'Not
+cleared';<br/>
+<br/>
+                tableHTML += `<br/>
+            
+       &lt;tr class=&quot;${statusClass}&quot;&gt;<br/>
+             
+          &lt;td&gt;${record.truckNumber}&lt;/td&gt;<br/>
+           
+            &lt;td&gt;${record.agentName}&lt;/td&gt;<br/>
+           
+            &lt;td&gt;${record.border || '-'}&lt;/td&gt;<br/>
+       
+                &lt;td&gt;${formatDate(record.dateLoaded)}&lt;/td&gt;<br/>
+
+                       &lt;td&gt;${dateClearedDisplay}&lt;/td&gt;<br/>
+
+               
+</p>
+<p style="line-height: 100%; margin-bottom: 0in">       
+&lt;td&gt;${statusDisplay}&lt;/td&gt;<br/>
+                       
+&lt;td class=&quot;action-buttons&quot;&gt;<br/>
+                    
+       &lt;button class=&quot;btn btn-sm btn-info view-btn&quot;
+data-id=&quot;${record.id}&quot;&gt;View&lt;/button&gt;<br/>
+        
+                   ${isAdmin || record.username === currentUser ?
+`&lt;button class=&quot;btn btn-sm btn-warning edit-btn&quot;
+data-id=&quot;${record.id}&quot;&gt;Edit&lt;/button&gt;<br/>
+        
+                   &lt;button class=&quot;btn btn-sm btn-danger
+delete-btn&quot; data-id=&quot;${record.id}&quot;&gt;Delete&lt;/button&gt;`
+: ''}<br/>
+                        &lt;/td&gt;<br/>
+                 
+  &lt;/tr&gt;<br/>
+                `;<br/>
+            });<br/>
+<br/>
+
+           recordsTable.innerHTML = tableHTML || '&lt;tr&gt;&lt;td
+colspan=&quot;7&quot; class=&quot;text-center&quot;&gt;No records
+found&lt;/td&gt;&lt;/tr&gt;';<br/>
+<br/>
+           
+document.querySelectorAll('.view-btn').forEach(btn =&gt; {<br/>
+     
+          btn.addEventListener('click', viewRecord);<br/>
+           
+});<br/>
+           
+document.querySelectorAll('.edit-btn').forEach(btn =&gt; {<br/>
+     
+          btn.addEventListener('click', editRecord);<br/>
+           
+});<br/>
+           
+document.querySelectorAll('.delete-btn').forEach(btn =&gt; {<br/>
+   
+            btn.addEventListener('click', deleteRecord);<br/>
+       
+    });<br/>
+        }<br/>
+<br/>
+        // --- VIEW RECORD MODAL
+---<br/>
+        function viewRecord(e) {<br/>
+            const
+recordId = e.target.getAttribute('data-id');<br/>
+            const
+record = clearanceRecords.find(r =&gt; r.id === recordId);<br/>
+<br/>
+
+           if (record) {<br/>
+                modalBody.innerHTML =
+`<br/>
+                    &lt;p&gt;&lt;strong&gt;Truck
+Number:&lt;/strong&gt; ${record.truckNumber}&lt;/p&gt;<br/>
+         
+          &lt;p&gt;&lt;strong&gt;Agent Name:&lt;/strong&gt;
+${record.agentName}&lt;/p&gt;<br/>
+                   
+&lt;p&gt;&lt;strong&gt;Border:&lt;/strong&gt; ${record.border ||
+'-'}&lt;/p&gt;<br/>
+                    &lt;p&gt;&lt;strong&gt;Date
+Loaded:&lt;/strong&gt; ${formatDate(record.dateLoaded)}&lt;/p&gt;<br/>
+
+                   &lt;p&gt;&lt;strong&gt;Date Cleared:&lt;/strong&gt;
+${record.dateCleared ? formatDate(record.dateCleared) : 'Not
+cleared'}&lt;/p&gt;<br/>
+                   
+&lt;p&gt;&lt;strong&gt;Status:&lt;/strong&gt;
+${record.status.charAt(0).toUpperCase() +
+record.status.slice(1)}&lt;/p&gt;<br/>
+                   
+&lt;p&gt;&lt;strong&gt;Comments:&lt;/strong&gt; ${record.comments ||
+'None'}&lt;/p&gt;<br/>
+                `;<br/>
+               
+recordModal.show();<br/>
+            }<br/>
+        }<br/>
+<br/>
+    
+   // --- EDIT RECORD ---<br/>
+        function editRecord(e) {<br/>
+
+           const recordId = e.target.getAttribute('data-id');<br/>
+  
+         const record = clearanceRecords.find(r =&gt; r.id ===
+recordId);<br/>
+            if (!record) return;<br/>
+<br/>
+         
+  // For simplicity, reuse the add form for editing<br/>
+           
+document.getElementById('truckNumber').value = record.truckNumber;<br/>
+
+           document.getElementById('agentName').value =
+record.agentName;<br/>
+           
+document.getElementById('border').value = record.border;<br/>
+       
+    document.getElementById('dateLoaded').value = record.dateLoaded;<br/>
+
+           document.getElementById('dateCleared').value =
+record.dateCleared || '';<br/>
+           
+document.getElementById('status').value = record.status;<br/>
+       
+    document.getElementById('comments').value = record.comments ||
+'';<br/>
+            form.onsubmit = function(ev) {<br/>
+            
+   ev.preventDefault();<br/>
+                const updated = {<br/>
+ 
+                  username: currentUser,<br/>
+                   
+truckNumber: document.getElementById('truckNumber').value,<br/>
+     
+              agentName: document.getElementById('agentName').value,<br/>
+
+                   border: document.getElementById('border').value,<br/>
+
+                   dateLoaded:
+document.getElementById('dateLoaded').value,<br/>
+                   
+dateCleared: document.getElementById('dateCleared').value || null,<br/>
+
+                   status: document.getElementById('status').value,<br/>
+
+                   comments:
+document.getElementById('comments').value<br/>
+                };<br/>
+
+               fetch(API_URL + '/' + recordId, {<br/>
+               
+    method: 'PUT',<br/>
+                    headers: {'Content-Type':
+'application/json'},<br/>
+                    body:
+JSON.stringify(updated)<br/>
+                })<br/>
+               
+.then(res =&gt; res.json())<br/>
+                .then(data =&gt; {<br/>
+
+                   if (data.success) {<br/>
+                       
+fetchRecords();<br/>
+                        alert('Record
+updated!');<br/>
+                        form.reset();<br/>
+         
+              form.onsubmit = handleFormSubmit;<br/>
+                
+   } else {<br/>
+                        alert('Failed to update
+record');<br/>
+                    }<br/>
+                });<br/>
+  
+         };<br/>
+        }<br/>
+<br/>
+        // --- DELETE RECORD
+---<br/>
+        function deleteRecord(e) {<br/>
+            const
+recordId = e.target.getAttribute('data-id');<br/>
+            if
+(!confirm('Are you sure you want to delete this record?')) return;<br/>
+
+           fetch(API_URL + '/' + recordId, {<br/>
+               
+method: 'DELETE',<br/>
+                headers: {'Content-Type':
+'application/json'},<br/>
+                body: JSON.stringify({
+username: currentUser })<br/>
+            })<br/>
+           
+.then(res =&gt; res.json())<br/>
+            .then(data =&gt; {<br/>
+
+               if (data.success) {<br/>
+                   
+fetchRecords();<br/>
+                    alert('Record deleted.');<br/>
+
+               } else {<br/>
+                    alert('Failed to
+delete record: ' + (data.error || 'Unknown error'));<br/>
+           
+    }<br/>
+            });<br/>
+        }<br/>
+<br/>
+        // ---
+RESET FILTERS ---<br/>
+        function resetAllFilters() {<br/>
+    
+       filterStatus.value = 'all';<br/>
+           
+filterBorder.value = 'all';<br/>
+            filterDateFrom.value =
+'';<br/>
+            filterDateTo.value = '';<br/>
+           
+filterSearch.value = '';<br/>
+            renderTable();<br/>
+       
+}<br/>
+<br/>
+        // --- FORMAT DATE ---<br/>
+        function
+formatDate(dateString) {<br/>
+            if (!dateString) return
+null;<br/>
+            const date = new Date(dateString);<br/>
+      
+     if (isNaN(date)) return dateString;<br/>
+            return
+date.toLocaleDateString('en-US', {year: 'numeric', month: 'short',
+day: 'numeric'});<br/>
+        }<br/>
+<br/>
+        // --- EXCEL
+IMPORT ---<br/>
+        function handleExcelImport() {<br/>
+         
+  const fileInput = document.getElementById('importExcel');<br/>
+    
+       if (!fileInput.files[0]) {<br/>
+                alert('Please
+select an Excel file to import.');<br/>
+                return;<br/>
+
+           }<br/>
+            const file = fileInput.files[0];<br/>
+ 
+          const reader = new FileReader();<br/>
+           
+reader.onload = function(e) {<br/>
+                const data = new
+Uint8Array(e.target.result);<br/>
+                const workbook =
+XLSX.read(data, {type: 'array'});<br/>
+                const
+sheetName = workbook.SheetNames[0];<br/>
+                const
+worksheet = workbook.Sheets[sheetName];<br/>
+                const
+jsonData = XLSX.utils.sheet_to_json(worksheet, {defval: &quot;&quot;});<br/>
+<br/>
+
+               let importedCount = 0;<br/>
+                let lastId
+= clearanceRecords.length &gt; 0 ?
+Math.max(...clearanceRecords.map(rec =&gt; rec.id || 0)) : 0;<br/>
+<br/>
+
+               jsonData.forEach(row =&gt; {<br/>
+                   
+if (row.truckNumber &amp;&amp; row.agentName &amp;&amp; row.border &amp;&amp;
+row.dateLoaded &amp;&amp; row.status) {<br/>
+                       
+const newRecord = {<br/>
+                            truckNumber:
+row.truckNumber,<br/>
+                            agentName:
+row.agentName,<br/>
+                            border: row.border,<br/>
+
+                           dateLoaded: row.dateLoaded,<br/>
+         
+                  dateCleared: row.dateCleared || null,<br/>
+        
+                   status: row.status.toLowerCase(),<br/>
+           
+                comments: row.comments || '',<br/>
+                  
+         username: currentUser<br/>
+                        };<br/>
+ 
+                      if (row.agentName &amp;&amp;
+!agents.includes(row.agentName)) {<br/>
+                           
+agents.push(row.agentName);<br/>
+                           
+renderAgentOptions();<br/>
+                        }<br/>
+           
+            fetch(API_URL, {<br/>
+                            method:
+'POST',<br/>
+                            headers: {'Content-Type':
+'application/json'},<br/>
+                            body:
+JSON.stringify(newRecord)<br/>
+                        })<br/>
+      
+                 .then(res =&gt; res.json())<br/>
+                   
+    .then(resData =&gt; {<br/>
+                            if
+(resData.success) {<br/>
+                                newRecord.id
+= resData.id;<br/>
+                               
+clearanceRecords.unshift(newRecord);<br/>
+                           
+    renderTable();<br/>
+                            }<br/>
+          
+             })<br/>
+                        .catch(() =&gt; {<br/>
+ 
+                          newRecord.id = ++lastId;<br/>
+             
+              clearanceRecords.unshift(newRecord);<br/>
+             
+              renderTable();<br/>
+                        });<br/>
+<br/>
+
+                       importedCount++;<br/>
+                    }<br/>
+
+               });<br/>
+                alert(importedCount + '
+records imported from Excel.');<br/>
+                fileInput.value
+= '';<br/>
+            };<br/>
+           
+reader.readAsArrayBuffer(file);<br/>
+        }<br/>
+<br/>
+        //
+--- REPORTS ---<br/>
+        function showReport(type) {<br/>
+       
+    let url, reportName;<br/>
+            if (type === 'month') {<br/>
+
+               url = REPORT_MONTH_URL;<br/>
+               
+reportName = &quot;Cleared Trucks by Month&quot;;<br/>
+            }
+else {<br/>
+                url = REPORT_AGENT_URL;<br/>
+            
+   reportName = &quot;Cleared Trucks by Agent&quot;;<br/>
+           
+}<br/>
+            fetch(url + '?username=' +
+encodeURIComponent(currentUser))<br/>
+                .then(res =&gt;
+res.json())<br/>
+                .then(data =&gt; {<br/>
+            
+       let tableHTML = '';<br/>
+                    if (type ===
+'month') {<br/>
+                        tableHTML = `<br/>
+          
+                 &lt;table class=&quot;table table-bordered
+report-table&quot;&gt;<br/>
+                               
+&lt;thead&gt;&lt;tr&gt;<br/>
+                                   
+&lt;th&gt;Month&lt;/th&gt;<br/>
+                                   
+&lt;th&gt;Cleared Truck Count&lt;/th&gt;<br/>
+                       
+            &lt;th&gt;Truck Numbers&lt;/th&gt;<br/>
+                 
+              &lt;/tr&gt;&lt;/thead&gt;<br/>
+                        
+       &lt;tbody&gt;<br/>
+                        `;<br/>
+           
+            data.forEach(row =&gt; {<br/>
+                           
+tableHTML += `<br/>
+                                &lt;tr&gt;<br/>
+ 
+                                  &lt;td&gt;${row.month || '-'}&lt;/td&gt;<br/>
+
+            
+</p>
+<p style="line-height: 100%; margin-bottom: 0in">                    
+  &lt;td&gt;${row.count}&lt;/td&gt;<br/>
+                            
+       &lt;td&gt;${(row.trucks || '').split(',').join(', ')}&lt;/td&gt;<br/>
+
+                               &lt;/tr&gt;<br/>
+                     
+      `;<br/>
+                        });<br/>
+                      
+ tableHTML += '&lt;/tbody&gt;&lt;/table&gt;';<br/>
+                  
+ } else if (type === 'agent') {<br/>
+                       
+tableHTML = `<br/>
+                            &lt;table class=&quot;table
+table-bordered report-table&quot;&gt;<br/>
+                          
+     &lt;thead&gt;&lt;tr&gt;<br/>
+                                   
+&lt;th&gt;Agent Name&lt;/th&gt;<br/>
+                                
+   &lt;th&gt;Cleared Count&lt;/th&gt;<br/>
+                          
+         &lt;th&gt;Truck Numbers&lt;/th&gt;<br/>
+                    
+           &lt;/tr&gt;&lt;/thead&gt;<br/>
+                           
+    &lt;tbody&gt;<br/>
+                        `;<br/>
+              
+         data.forEach(row =&gt; {<br/>
+                           
+tableHTML += `<br/>
+                                &lt;tr&gt;<br/>
+ 
+                                  &lt;td&gt;${row.agentName}&lt;/td&gt;<br/>
+
+                                   &lt;td&gt;${row.clearedCount}&lt;/td&gt;<br/>
+
+                                   &lt;td&gt;${(row.truckNumbers ||
+'').split(',').join(', ')}&lt;/td&gt;<br/>
+                          
+     &lt;/tr&gt;<br/>
+                            `;<br/>
+           
+            });<br/>
+                        tableHTML +=
+'&lt;/tbody&gt;&lt;/table&gt;';<br/>
+                    }<br/>
+     
+              reportTitle.textContent = reportName;<br/>
+            
+       reportBody.innerHTML = tableHTML;<br/>
+                   
+reportModal.show();<br/>
+                })<br/>
+               
+.catch(() =&gt; {<br/>
+                    reportTitle.textContent =
+reportName;<br/>
+                    reportBody.innerHTML = '&lt;div
+class=&quot;alert alert-warning&quot;&gt;Failed to fetch report data
+(backend may not be running).&lt;/div&gt;';<br/>
+                   
+reportModal.show();<br/>
+                });<br/>
+        }<br/>
+   
+&lt;/script&gt;<br/>
+&lt;/body&gt;<br/>
+&lt;/html&gt;</p>
+</body>
+</html>
